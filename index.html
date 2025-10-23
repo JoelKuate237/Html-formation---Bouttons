@@ -1,33 +1,259 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section Hero - Atelier Débutant</title>
+<!DOCTYPE html> <!-- Déclare le type de document HTML5 -->
+<html lang="fr"> <!-- Langue du document: Français -->
 
-    <!-- Importation de la police Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+<head> <!-- En-tête du document: métadonnées et styles -->
+    <!-- Définition de l'encodage et du viewport pour une bonne compatibilité -->
+    <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mise à l'échelle responsive -->
+    <!-- Titre de la page affiché dans l'onglet du navigateur -->
+    <title>6 Boutons Pur CSS (Minimal)</title> <!-- Titre de la page -->
 
-    <!-- LIAISON VERS LE FICHIER CSS EXTERNE -->
-    <link rel="stylesheet" href="style.css"> 
-</head>
-<body>
+    <!-- Styles internes : tous les boutons et la mise en page -->
+    <style>
+        /* Début du CSS interne */
+        /* Configuration des variables de couleur (réutilisables partout) */
+        :root {
+            /* Zone des variables CSS globales */
+            --primary-color: #4f46e5;
+            /* Indigo */
+            --primary-dark: #4338ca;
+            /* Indigo foncé */
+            --secondary-color: #ef4444;
+            /* Rouge */
+            --blue-color: #3b82f6;
+            /* Bleu */
+            --text-color: #ffffff;
+            --bg-light: #f3f4f6;
+            --text-dark: #1f2937;
+        }
 
-    <!-- Balise sémantique pour la section principale d'introduction -->
-    <section class="hero">
-        <!-- Conteneur pour le contenu (facilite le centrage) -->
-        <div class="hero-content">
-            <!-- Titre principal (Concept <h1>) -->
-            <h1>Donnez Vie à Vos Idées <span class="text-gradient">en un Clic</span></h1>
-            <!-- Paragraphe descriptif (Concept <p>) -->
-            <p>Apprenez les bases du HTML et du CSS pour construire des pages web modernes et percutantes, à commencer par cette section Hero.</p>
-            <!-- Bouton d'Appel à l'Action (Concept <a> stylisé) -->
-            <a href="#" class="cta-button">Commencer l'Aventure</a>
-        </div>
-    </section>
+        /* Fin des variables */
 
-    <!-- Le reste de votre page irait ici -->
+        /* Mise en page minimale : centrer tous les boutons dans la page */
+        body {
+            /* Corps de la page */
+            font-family: 'Inter', sans-serif;
+            /* Police principale */
+            background-color: var(--bg-light);
+            /* Couleur de fond claire */
+            /* Utilisation de Flexbox pour centrer le contenu */
+            display: flex;
+            /* Active Flexbox */
+            flex-direction: row;
+            /* Aligne les boutons en ligne */
+            flex-wrap: wrap;
+            /* Retour à la ligne si nécessaire */
+            justify-content: center;
+            /* Centre horizontalement */
+            align-items: center;
+            /* Centre verticalement */
+            min-height: 100vh;
+            /* Prend toute la hauteur de la fenêtre */
+            margin: 0;
+            /* Supprime les marges par défaut */
+            padding: 32px;
+            /* Espace intérieur autour du contenu */
+        }
 
-</body>
-</html>
+        /* Fin body */
+
+        /* --- CLASSE DE BASE DES BOUTONS --- 
+           Sert de fondation commune pour tous les styles (taille, alignement, etc.)
+        */
+        .btn-base {
+            /* Classe de base commune à tous les boutons */
+            display: inline-flex;
+            /* Permet centrage vertical/horizontal du texte */
+            align-items: center;
+            /* Centre verticalement le contenu */
+            justify-content: center;
+            /* Centre horizontalement le contenu */
+            padding: 1rem 2rem;
+            /* Taille interne du bouton */
+            margin: 1rem;
+            /* Espace entre les boutons */
+            font-weight: 600;
+            /* Épaisseur du texte */
+            cursor: pointer;
+            /* Curseur en forme de main */
+            border-radius: 0.5rem;
+            /* Coins arrondis */
+            text-align: center;
+            /* Centre le texte */
+            text-decoration: none;
+            /* Pas de soulignement */
+            user-select: none;
+            /* Désactive la sélection du texte */
+            min-width: 200px;
+            /* Largeur minimale */
+            transition: all 0.3s ease-out;
+            /* Pour les animations fluides */
+            box-sizing: border-box;
+            /* Inclut padding et bordure dans la taille */
+        }
+
+        /* Fin .btn-base */
+
+        /* --- STYLES SPÉCIFIQUES DES BOUTONS AVEC HOVER --- */
+
+        /* 1. Solide : fond plein + bordure assortie */
+        .btn-1 {
+            /* Bouton plein indigo */
+            background-color: var(--primary-color);
+            /* Fond indigo */
+            color: var(--text-color);
+            /* Texte blanc */
+            border: 2px solid var(--primary-color);
+            /* Bordure assortie */
+        }
+
+        .btn-1:hover {
+            /* État au survol */
+            background-color: var(--primary-dark);
+            /* Indigo foncé */
+            border-color: var(--primary-dark);
+            /* Bordure foncée */
+        }
+
+        /* 2. Contour (Outline) : transparent avec une bordure colorée */
+        .btn-2 {
+            /* Bouton contour rouge */
+            background-color: transparent;
+            /* Pas de fond */
+            border: 2px solid var(--secondary-color);
+            /* Bordure rouge */
+            color: var(--secondary-color);
+            /* Texte rouge */
+        }
+
+        .btn-2:hover {
+            /* Au survol: fond rouge, texte blanc */
+            /* HOVER : Remplissage complet */
+            background-color: var(--secondary-color);
+            /* Devient rouge */
+            color: var(--text-color);
+            /* Devient blanc */
+        }
+
+        /* 3. Arrondi (Pill) : forme pilule et effet de clic */
+        .btn-3 {
+            /* Bouton pilule émeraude */
+            background-color: #da3bb4;
+            /* Emeraude */
+            color: var(--text-color);
+            /* Texte blanc */
+            border: none;
+            /* Pas de bordure */
+            
+        }
+
+        .btn-3:active {
+            /* À l'appui: effet pression */
+            /* ACTIVE : Effet de pression (click) */
+            transform: scale(0.95);
+            /* Rétrécit légèrement */
+        }
+
+        /* 4. Ombre (Shadow) : ombre portée et léger flottement au survol */
+        .btn-4 {
+            /* Bouton bleu avec ombre */
+            background-color: var(--blue-color);
+            /* Fond bleu */
+            color: var(--text-color);
+            /* Texte blanc */
+            border: none;
+            /* Pas de bordure */
+            box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
+            /* Ombre douce */
+        }
+
+        .btn-4:hover {
+            /* Au survol: ombre plus forte et léger déplacement */
+            /* HOVER : Le bouton "flotte" */
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+            /* Ombre accentuée */
+            transform: translateY(-6px) translateX(6px);
+            /* Monte légèrement */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        /* 5. Dégradé (Gradient) : fond dégradé et angle modifié au survol */
+        .btn-5 {
+            /* Bouton à fond dégradé */
+            background: linear-gradient(90deg, #f97316, #ef4444);
+            /* Dégradé orange->rouge */
+            color: var(--text-color);
+            /* Texte blanc */
+            border: none;
+            /* Pas de bordure */
+        }
+
+        .btn-5:hover {
+            /* Au survol: angle du dégradé change */
+            /* HOVER : Change l'angle du dégradé */
+            background: linear-gradient(135deg, #1c0e05, #f27f7f);
+            /* Dégradé incliné */
+        }
+
+        /* 6. Souligné (Underline) : texte simple avec soulignement au survol */
+        .btn-6 {
+            /* Bouton minimaliste souligné */
+            background-color: transparent;
+            /* Sans fond */
+            color: var(--text-dark);
+            /* Texte sombre */
+            border: none;
+            /* Pas de bordure externe */
+            border-bottom: 2px solid transparent;
+            /* Soulignement caché */
+            padding-bottom: 0.6rem;
+            /* Espace pour l'underline */
+            border-radius: 0;
+            /* Angles droits */
+        }
+
+        .btn-6:hover {
+            /* Au survol: soulignement visible */
+            /* HOVER : Fait apparaître la bordure */
+            border-bottom: 2px solid var(--primary-color);
+            /* Souligné indigo */
+        }
+
+        /* Adaptabilité pour les petits écrans (mise en colonne) */
+        @media (max-width: 768px) {
+
+            /* Styles pour écrans <= 768px */
+            body {
+                /* Empile les boutons en colonne */
+                flex-direction: column;
+                /* Afficher les boutons en colonne */
+            }
+
+            .btn-base {
+                /* Boutons full-width en mobile */
+                min-width: 100%;
+                /* Occupe toute la largeur */
+                margin: 0.5rem 0;
+                /* Espacement vertical */
+            }
+        }
+
+        /* Fin media query */
+    </style> <!-- Fin du CSS interne -->
+</head> <!-- Fin de l'en-tête -->
+
+<body> <!-- Corps de la page -->
+
+    <!-- Démonstration de 6 variantes de boutons CSS -->
+    <button class="btn-base btn-1">Bouton Solide</button> <!-- Style 1: fond plein -->
+    <button class="btn-base btn-2">Bouton Contour</button> <!-- Style 2: contour -->
+    <button class="btn-base btn-3">Bouton Pilule</button> <!-- Style 3: forme pilule -->
+    <button class="btn-base btn-4">Bouton Ombre</button> <!-- Style 4: ombre -->
+    <button class="btn-base btn-5">Bouton Dégradé</button> <!-- Style 5: dégradé -->
+    <button class="btn-base btn-6">Bouton Souligné</button> <!-- Style 6: souligné -->
+
+</body> <!-- Fin du corps de la page -->
+
+</html> <!-- Fin du document HTML -->
+
+html
